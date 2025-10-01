@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Página de Login</title>
+    <link rel="stylesheet" href="../css/login.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bcryptjs/2.4.3/bcrypt.min.js"></script>
+    <style>
+        /* Toast notifications */
+        .toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            min-width: 250px;
+            padding: 15px 20px;
+            border-radius: 8px;
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: opacity 0.4s, transform 0.4s;
+            z-index: 9999;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .toast.success {
+            background-color: #28a745;
+        }
+
+        .toast.error {
+            background-color: #dc3545;
+        }
+    </style>
+</head>
+
+<body>
+    <main role="main">
+        <div class="card">
+            <div class="brand">
+                <div class="logo">
+                    <img src="/img/quengar.jpg" alt="Logo" />
+                </div>
+                <div>
+                    <h2 id="login-title">Entrar na sua conta</h2>
+                    <p id="login-subtitle">Insira seu e-mail e senha para acessar</p>
+                </div>
+            </div>
+
+            <!-- Login -->
+            <form id="formulario-login" class="formulario login" novalidate>
+                <label for="email-login">E-mail</label>
+                <input id="email-login" type="email" placeholder="seu@exemplo.com" required />
+                <label for="password-login">Senha</label>
+                <input id="password-login" type="password" placeholder="Digite sua senha" required />
+                <button type="submit">Entrar</button>
+                <p class="muda">
+                    Não possui conta? <a href="#" onclick="mostrarCadastro()">Cadastrar</a>
+                </p>
+            </form>
+
+            <!-- Cadastro -->
+            <form id="formulario-cadastro" class="formulario cadastro oculto" novalidate>
+                <label for="nome-cadastro">Nome completo</label>
+                <input id="nome-cadastro" type="text" placeholder="Nome completo" required />
+                <label for="usuario-cadastro">Nome de Usuário</label>
+                <input id="usuario-cadastro" type="text" placeholder="Nome de Usuário" required />
+                <label for="cpf-cadastro">CPF</label>
+                <input id="cpf-cadastro" type="text" placeholder="123.456.789-00" required />
+                <label for="telefone-cadastro">Telefone</label>
+                <input id="telefone-cadastro" type="text" placeholder="31 91234-1234" required />
+                <label for="data_nascimento-cadastro">Data de Nascimento</label>
+                <input id="data_nascimento-cadastro" type="date" required />
+                <label for="email-cadastro">E-mail</label>
+                <input id="email-cadastro" type="email" placeholder="seu@exemplo.com" required />
+                <label for="password-cadastro">Senha</label>
+                <input id="password-cadastro" type="password" placeholder="Digite sua senha" required />
+                <button type="submit">Cadastrar</button>
+                <p class="muda">
+                    Já tem conta? <a href="#" onclick="mostrarlogin()">Entrar</a>
+                </p>
+            </form>
+        </div>
+    </main>
+
+    <!-- Toast container -->
+    <div id="toast" class="toast"></div>
+
+    <!-- JS -->
+    <script src="../js/pokemons.js"></script>
+</body>
+
+</html>

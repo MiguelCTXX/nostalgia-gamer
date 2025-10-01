@@ -1,0 +1,403 @@
+/* Custom styles */
+body {
+    background: #121212;
+    color: #eee;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+a.nav-link {
+    transition: color 0.3s ease;
+}
+
+a.nav-link:hover,
+a.nav-link.active {
+    color: #ff6f61 !important;
+}
+
+
+/* Header */
+header {
+    background: linear-gradient(135deg, #0d37f1 0%, #ffd000 100%);
+    box-shadow: 0 4px 10px rgba(106, 13, 173, 0.6);
+    margin-bottom: 40px;
+    padding: 150px 0 60px 0;
+}
+
+header h1 {
+    font-weight: 900;
+    font-size: 2.8rem;
+    margin-bottom: 0.5rem;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+header p.lead {
+    font-size: 1.3rem;
+    font-weight: 500;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Section Titles */
+section h2 {
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: #ff6f61;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+/* Cards */
+.card {
+    border-radius: 12px;
+    background: #222;
+    box-shadow: 0 4px 12px rgb(255 111 97 / 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgb(255 111 97 / 0.6);
+}
+
+.card-img-top {
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-title {
+    color: #ff6f61;
+    font-weight: 700;
+}
+
+.card-text {
+    color: #ddd;
+}
+
+/* Buttons */
+.btn-danger,
+.btn-purple {
+    border-radius: 30px;
+    padding: 10px 30px;
+    font-weight: 600;
+    letter-spacing: 0.7px;
+    box-shadow: 0 4px 15px rgb(255 111 97 / 0.5);
+    transition: box-shadow 0.3s ease;
+}
+
+.btn-danger:hover,
+.btn-purple:hover {
+    box-shadow: 0 8px 25px rgb(255 111 97 / 0.8);
+}
+
+.btn-purple {
+    background-color: #6a0dad;
+    border-color: #6a0dad;
+    color: #fff;
+}
+
+
+.button {
+  cursor: pointer;
+  position: relative;
+  padding: 10px 24px;
+  font-size: 18px;
+  color: #ffae00;
+  border: 2px solid #867ce4;
+  border-radius: 20px 0 0 20px;
+  background-color: transparent;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+  overflow: hidden;
+}
+
+.button a {
+    color: #ffae00;
+    text-decoration: none;
+    padding: 10px;
+}
+
+.button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 50px;
+  height: 50px;
+  border-radius: inherit;
+  scale: 0;
+  z-index: -1;
+  background-color: #ffae00;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.button:hover::before {
+  scale: 3;
+}
+
+.button:hover {
+  color: #ffffff;
+  scale: 1.1;
+  box-shadow: 0 0px 20px rgba(193, 163, 98,0.4);
+}
+
+.button:hover a {
+    color: #ffffff;
+}
+
+.button:active {
+  scale: 1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Footer */
+footer {
+    background: #1a1a1a;
+    padding: 15px 0;
+    font-size: 0.9rem;
+    color: #aaa;
+    box-shadow: inset 0 1px 0 #333;
+}
+
+/* Lightbox */
+#lightbox {
+    position: fixed;
+    display: none;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.85);
+    justify-content: center;
+    align-items: center;
+    z-index: 1055;
+    cursor: pointer;
+}
+
+#lightbox img {
+    max-width: 90%;
+    max-height: 80%;
+    border-radius: 10px;
+    box-shadow: 0 0 30px rgba(255, 111, 97, 0.8);
+}
+
+#lightbox .fechar {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 3rem;
+    color: #ff6f61;
+    cursor: pointer;
+    user-select: none;
+}
+
+
+/* Responsive tweaks */
+@media (max-width: 767.98px) {
+    header h1 {
+        font-size: 2rem;
+    }
+
+    .card-img-top {
+        height: 150px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Estilização customizada */
+
+/* Botão voltar ao topo */
+#amem {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #6a0dad;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 50px;
+    font-weight: bold;
+    text-decoration: none;
+    box-shadow: 0 4px 8px rgba(106, 13, 173, 0.4);
+    transition: background-color 0.3s ease;
+    z-index: 1100;
+}
+
+#amem:hover {
+    background-color: #4b068a;
+    text-decoration: none;
+    color: white;
+}
+
+/* Navbar Brand with gradient */
+
+/* Carousel captions improvements */
+.carousel-caption {
+    backdrop-filter: blur(6px);
+}
+
+.carousel-custom {
+    max-width: 1200px; /* Diminui a largura total do carousel */
+    margin: 0 auto;   /* Centraliza horizontalmente */
+}
+
+.carousel-custom .carousel-item img {
+    max-height: 700px; /* Limita a altura da imagem */
+    object-fit: cover; /* Corta a imagem se necessário mantendo proporção */
+    border-radius: 10px; /* Borda arredondada opcional */
+}
+
+
+
+
+/* Modal header btn-close white */
+.modal-header .btn-close {
+    filter: brightness(0) invert(1);
+}
+
+/* Custom button purple */
+.btn-purple {
+    background-color: #6a0dad;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.btn-purple:hover {
+    background-color: #4b068a;
+}
+
+
+
+/*------------------------------Menu amberueigoer e normal*/
+
+/* Menu principal */
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+/* Botão hamburguer - escondido em telas grandes */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+}
+
+.hamburger div {
+    width: 25px;
+    height: 3px;
+    background: white;
+    border-radius: 2px;
+}
+
+/* Menu hamburguer oculto inicialmente */
+.mobile-menu {
+    display: none;
+    position: absolute;
+    top: 60px;
+    /* abaixo do header */
+    right: 20px;
+    background: #444;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.mobile-menu ul {
+    flex-direction: column;
+    padding: 10px;
+}
+
+.mobile-menu ul li {
+    margin: 10px 0;
+}
+
+.mobile-menu ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    display: block;
+}
+
+/* Sidebar escondida inicialmente */
+.sidebar {
+    height: 100vh;
+    width: 250px;
+    background-color: #333;
+    color: white;
+    position: fixed;
+    top: 0;
+    left: -250px;
+    /* escondida fora da tela */
+    transition: left 0.3s ease;
+    padding-top: 60px;
+    z-index: 1000;
+}
+
+/* Quando sidebar estiver ativa, ela aparece */
+.sidebar.active {
+    left: 0;
+}
+
+/* Itens da sidebar */
+.sidebar a {
+    display: block;
+    padding: 15px 25px;
+    color: white;
+    text-decoration: none;
+}
+
+.sidebar a:hover {
+    background-color: #575757;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    nav ul {
+        display: none;
+        /* esconde menu grande */
+    }
+
+    .hamburger {
+        display: flex;
+        /* mostra o botão hamburguer */
+    }
+}
+
+/* Quando o menu mobile estiver ativo */
+.mobile-menu.active {
+    display: block;
+}
+

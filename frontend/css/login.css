@@ -1,0 +1,141 @@
+/* Fundo com imagem */
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url("/img/pokemons.jpg");
+    background-position: center;
+    background-size: cover;
+}
+
+/* Card central */
+.card {
+    background: rgba(0, 0, 0, 0.85);
+    padding: 2rem;
+    padding-bottom: 3rem;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+    color: white;
+    text-align: center;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 18px;
+    justify-content: center
+}
+
+.logo {
+    width: 52px;
+    height: 52px;
+    border-radius: 12px;
+    display: grid;
+    place-items: center;
+    background: linear-gradient(135deg, var(--purple), var(--lavender));
+    color: white;
+    font-weight: 700;
+    font-size: 18px;
+    box-shadow: 0 6px 18px rgba(106, 13, 173, 0.25)
+}
+
+.logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    /* mantém proporção da imagem */
+    border-radius: 12px;
+    /* se quiser borda arredondada igual antes */
+}
+
+.brand h2 {
+    font-size: 20px;
+    text-align: center
+}
+
+.brand p {
+    font-size: 13px;
+    color: #6b6176;
+    margin-top: 2px;
+    text-align: center
+}
+
+/* Inputs */
+.formulario input {
+    width: 90%;
+    padding: 0.9rem;
+    margin: 0.5rem 0;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+    font-size: 0.95rem;
+    background: #f2f2f2;
+    color: #333;
+}
+
+/* Botão principal */
+.formulario button {
+    width: 100%;
+    padding: 0.9rem;
+    margin-top: 1rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    color: white;
+    background: linear-gradient(90deg, #7b2ff7, #f1076f);
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.formulario button:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
+}
+
+/* Links */
+.formulario p {
+    margin-top: 1rem;
+    font-size: 0.85rem;
+}
+
+.formulario a {
+    color: #c77dff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.formulario a:hover {
+    text-decoration: underline;
+}
+
+/* Ocultar formulário */
+.oculto {
+    display: none;
+}
+
+.formulario {
+    text-align: start;
+}
+
+form label {
+    color: #f2f2f2e7;
+    font-size: 13px;
+    font-weight: 700;
+    position: relative;
+    top: 7px;
+}
+
+.muda {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+
+}
