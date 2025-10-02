@@ -1,6 +1,24 @@
 const { conectar, desconectar } = require('./db');
 const bcrypt = require('bcrypt');
 
+async function criarTabelas() {
+    const conexao = await conectar();
+    let query = `
+        CREATE TABLE IF NOT EXISTS usuarios (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        nome VARCHAR(100) NOT NULL,
+        usuario VARCHAR(100) NOT NULL UNIQUE,
+        cpf CHAR(11) NOT NULL UNIQUE,
+        telefone CHAR(11) NOT NULL UNIQUE,
+        data_nascimento DATE,
+        email VARCHAR(100) NOT NULL UNIQUE,
+        senha VARCHAR(255) NOT NULL
+    )`;
+
+    await conexao.execute(query);
+    await desconectar(conexao);
+    
+}
 
 async function inserir_usuario(user) {
     const { nome, usuario, cpf, telefone, data_nascimento, email } = user;
@@ -46,4 +64,4 @@ async function autenticar_usuario(usuario) {
     };
 }
 
-module.exports = { inserir_usuario, autenticar_usuario };
+module.exports = { inserir_usuario, autenticar_usuario, criarTabelas };

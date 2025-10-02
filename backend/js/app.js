@@ -1,16 +1,15 @@
 const session = require("express-session");
 const express = require('express');
 const cors = require('cors');
-const { inserir_usuario, autenticar_usuario } = require('./controller');
+const { inserir_usuario, autenticar_usuario, criarTabelas } = require('./controller');
 
 const app = express();
 
 app.use(express.json());
 
-app.use(cors({
-    origin: ["http://127.0.0.1:5500", "http://localhost:5500"],
-    credentials: true // <--- permite enviar cookies
-}));
+app.use(cors());
+
+criarTabelas();
 
 app.use(session({
     secret: "segredo-super-seguro",  // troque para um segredo forte
