@@ -1,8 +1,30 @@
-/* Custom styles */
+/* ===========================================
+   VARIÁVEIS CSS (ROOT)
+   =========================================== */
+:root {
+    --purple: #7b2ff7;
+    --lavender: #f1076f;
+    --primary-color: #ff6f61;
+    --purple-dark: #6a0dad;
+    --bg-dark: #121212;
+    --text-light: #eee;
+    --card-bg: #222;
+}
+
+/* ===========================================
+   ESTILOS GERAIS
+   =========================================== */
 body {
-    background: #121212;
-    color: #eee;
+    background: var(--bg-dark);
+    color: var(--text-light);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+a {
+    transition: color 0.3s ease;
 }
 
 a.nav-link {
@@ -11,16 +33,158 @@ a.nav-link {
 
 a.nav-link:hover,
 a.nav-link.active {
-    color: #ff6f61 !important;
+    color: var(--primary-color) !important;
 }
 
+/* ===========================================
+   NAVBAR E SIDEBAR MOBILE
+   =========================================== */
+.navbar {
+    z-index: 1030; /* Padrão Bootstrap, abaixo do modal de login */
+}
 
-/* Header */
+.navbar-brand img {
+    border-radius: 50%;
+}
+
+/* Menu principal desktop */
+.navbar-nav {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.navbar-nav .nav-link {
+    color: white !important;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+/* Botão Entrar (customizado) */
+.button {
+    cursor: pointer;
+    position: relative;
+    padding: 10px 24px;
+    font-size: 18px;
+    color: #ffae00;
+    border: 2px solid #867ce4;
+    border-radius: 20px 0 0 20px;
+    background-color: transparent;
+    font-weight: 600;
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.button::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 50px;
+    height: 50px;
+    border-radius: inherit;
+    scale: 0;
+    z-index: -1;
+    background-color: #ffae00;
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.button:hover::before {
+    scale: 3;
+}
+
+.button:hover {
+    color: #ffffff;
+    scale: 1.1;
+    box-shadow: 0 0 20px rgba(193, 163, 98, 0.4);
+}
+
+.button:active {
+    scale: 1;
+}
+
+/* Hamburger (escondido em desktop) */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+    background: none;
+    border: none;
+    padding: 4px;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background: white;
+    border-radius: 2px;
+    transition: 0.3s;
+}
+
+/* Sidebar mobile (escondida inicialmente) */
+.sidebar {
+    height: 100vh;
+    width: 250px;
+    background-color: #333;
+    color: white;
+    position: fixed;
+    top: 0;
+    left: -250px; /* Escondida fora da tela */
+    transition: left 0.3s ease;
+    padding-top: 60px; /* Espaço para navbar fixa */
+    z-index: 1000;
+}
+
+.sidebar.active {
+    left: 0;
+}
+
+.sidebar .navbar-nav {
+    flex-direction: column;
+    padding: 0;
+}
+
+.sidebar .nav-link {
+    display: block;
+    padding: 15px 25px;
+    color: white;
+    text-decoration: none;
+    border-bottom: 1px solid #444;
+}
+
+.sidebar .nav-link:hover {
+    background-color: #575757;
+}
+
+/* Responsividade para mobile */
+@media (max-width: 768px) {
+    .navbar-nav.me-auto {
+        display: none; /* Esconde menu desktop */
+    }
+
+    .hamburger {
+        display: flex; /* Mostra hamburger */
+    }
+
+    .button {
+        padding: 8px 16px;
+        font-size: 16px;
+    }
+}
+
+/* ===========================================
+   HEADER
+   =========================================== */
 header {
     background: linear-gradient(135deg, #0d37f1 0%, #ffd000 100%);
     box-shadow: 0 4px 10px rgba(106, 13, 173, 0.6);
-    margin-bottom: 40px;
+    margin-top: 76px; /* Espaço para navbar fixa */
     padding: 150px 0 60px 0;
+    text-align: center;
 }
 
 header h1 {
@@ -36,25 +200,40 @@ header p.lead {
     text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
 }
 
-/* Section Titles */
+/* Responsivo para header */
+@media (max-width: 767.98px) {
+    header {
+        padding: 100px 0 40px 0;
+        margin-top: 70px;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+}
+
+/* ===========================================
+   SEÇÕES E CARDS
+   =========================================== */
 section h2 {
     font-weight: 700;
     margin-bottom: 2rem;
-    color: #ff6f61;
+    color: var(--primary-color);
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
 }
 
-/* Cards */
 .card {
     border-radius: 12px;
-    background: #222;
-    box-shadow: 0 4px 12px rgb(255 111 97 / 0.3);
+    background: var(--card-bg);
+    box-shadow: 0 4px 12px rgba(255, 111, 97, 0.3);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+    color: var(--text-light);
 }
 
 .card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 10px 25px rgb(255 111 97 / 0.6);
+    box-shadow: 0 10px 25px rgba(255, 111, 97, 0.6);
 }
 
 .card-img-top {
@@ -65,7 +244,7 @@ section h2 {
 }
 
 .card-title {
-    color: #ff6f61;
+    color: var(--primary-color);
     font-weight: 700;
 }
 
@@ -73,107 +252,330 @@ section h2 {
     color: #ddd;
 }
 
-/* Buttons */
+/* Responsivo para cards */
+@media (max-width: 767.98px) {
+    .card-img-top {
+        height: 150px;
+    }
+}
+
+/* ===========================================
+   BOTÕES
+   =========================================== */
 .btn-danger,
 .btn-purple {
     border-radius: 30px;
     padding: 10px 30px;
     font-weight: 600;
     letter-spacing: 0.7px;
-    box-shadow: 0 4px 15px rgb(255 111 97 / 0.5);
-    transition: box-shadow 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 111, 97, 0.5);
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
 }
 
 .btn-danger:hover,
 .btn-purple:hover {
-    box-shadow: 0 8px 25px rgb(255 111 97 / 0.8);
+    box-shadow: 0 8px 25px rgba(255, 111, 97, 0.8);
+    transform: scale(1.05);
 }
 
 .btn-purple {
-    background-color: #6a0dad;
-    border-color: #6a0dad;
+    background-color: var(--purple-dark);
+    border-color: var(--purple-dark);
     color: #fff;
 }
 
-
-.button {
-  cursor: pointer;
-  position: relative;
-  padding: 10px 24px;
-  font-size: 18px;
-  color: #ffae00;
-  border: 2px solid #867ce4;
-  border-radius: 20px 0 0 20px;
-  background-color: transparent;
-  font-weight: 600;
-  transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
-  overflow: hidden;
+.btn-purple:hover {
+    background-color: #4b068a;
+    border-color: #4b068a;
 }
 
-.button a {
-    color: #ffae00;
+/* ===========================================
+   CAROUSEL
+   =========================================== */
+.carousel-custom {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.carousel-custom .carousel-item img {
+    max-height: 700px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.carousel-caption {
+    backdrop-filter: blur(6px);
+    background: rgba(0, 0, 0, 0.75) !important;
+    border-radius: 8px;
+}
+
+/* Responsivo para carousel */
+@media (max-width: 767.98px) {
+    .carousel-custom .carousel-item img {
+        max-height: 400px;
+    }
+}
+
+/* ===========================================
+   MODAIS BOOTSTRAP (POKÉMON E SPYRO)
+   =========================================== */
+.modal-content {
+    border-radius: 12px;
+}
+
+.modal-header .btn-close {
+    filter: brightness(0) invert(1);
+}
+
+/* ===========================================
+   MODAL DE LOGIN/CADASTRO (OVERLAY FULL-SCREEN)
+   =========================================== */
+.hidden {
+    display: none;
+    visibility: none;
+}
+
+.login.hidden {
+    display: none;
+}
+
+/* Fundo com imagem - Overlay fixo sobre o site */
+.login {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 9999; /* Acima de navbar (1030), lightbox (1055), sidebar (1000) */
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Fundo com imagem + overlay escuro para escurecer o site subjacente */
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("../imgs/pokemons.jpg");
+    background-position: center;
+    background-size: cover;
+    opacity: 1;
+    transition: opacity 0.3s ease; /* Para fade-in/out */
+}
+
+/* Card central */
+.login .card {
+    background: rgba(0, 0, 0, 0.9);
+    padding: 2rem;
+    padding-bottom: 3rem;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.8);
+    color: white;
+    text-align: center;
+    position: relative;
+    z-index: 10000; /* Acima do fundo */
+    transform: scale(0.95);
+    transition: transform 0.3s ease;
+}
+
+.login:not(.hidden) .card {
+    transform: scale(1);
+}
+
+/* Brand (logo e título) */
+.login .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 18px;
+    justify-content: center;
+}
+
+.login .logo {
+    width: 52px;
+    height: 52px;
+    border-radius: 12px;
+    display: grid;
+    place-items: center;
+    background: linear-gradient(135deg, var(--purple), var(--lavender));
+    color: white;
+    font-weight: 700;
+    font-size: 18px;
+    box-shadow: 0 6px 18px rgba(106, 13, 173, 0.25);
+}
+
+.login .logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 12px;
+}
+
+.login .brand h2 {
+    font-size: 20px;
+    text-align: center;
+    margin: 0;
+}
+
+.login .brand p {
+    font-size: 13px;
+    color: #6b6176;
+    margin-top: 2px;
+    text-align: center;
+    margin: 0;
+}
+
+/* Formulários e Inputs */
+.login .formulario {
+    text-align: left;
+}
+
+.login .formulario input {
+    width: 90%;
+    padding: 0.9rem;
+    margin: 0.5rem 0;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+    font-size: 0.95rem;
+    background: #f2f2f2;
+    color: #333;
+    box-sizing: border-box;
+}
+
+.login form label {
+    color: #f2f2f2e7;
+    font-size: 13px;
+    font-weight: 700;
+    position: relative;
+    top: 7px;
+    display: block;
+    margin-bottom: 2px;
+}
+
+/* Toggle senha (ícone de olho) */
+.login .formulario div[style*="position: relative"] button {
+    font-size: 16px;
+    z-index: 1;
+}
+
+.login .formulario div[style*="position: relative"] button:hover {
+    color: var(--purple);
+}
+
+/* Botão submit */
+.login .formulario button[type="submit"] {
+    width: 100%;
+    padding: 0.9rem;
+    margin-top: 1rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    color: white;
+    background: linear-gradient(90deg, var(--purple), var(--lavender));
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.login .formulario button[type="submit"]:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
+}
+
+/* Links no formulário */
+.login .formulario p {
+    margin-top: 1rem;
+    font-size: 0.85rem;
+    text-align: center;
+}
+
+.login .formulario a {
+    color: #c77dff;
     text-decoration: none;
-    padding: 10px;
+    font-weight: bold;
 }
 
-.button::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  margin: auto;
-  width: 50px;
-  height: 50px;
-  border-radius: inherit;
-  scale: 0;
-  z-index: -1;
-  background-color: #ffae00;
-  transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+.login .formulario a:hover {
+    text-decoration: underline;
 }
 
-.button:hover::before {
-  scale: 3;
+/* Ocultar formulário */
+.login .oculto {
+    display: none;
 }
 
-.button:hover {
-  color: #ffffff;
-  scale: 1.1;
-  box-shadow: 0 0px 20px rgba(193, 163, 98,0.4);
+.login .muda {
+    position: relative; /* Mudança: relative para centralizar no p */
+    left: 0;
+    transform: none;
+    text-align: center;
 }
 
-.button:hover a {
-    color: #ffffff;
+/* Botão fechar modal */
+.login .close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 10001;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background 0.2s ease;
 }
 
-.button:active {
-  scale: 1;
+.login .close-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
 }
 
+/* Responsivo para modal */
+@media (max-width: 480px) {
+    .login .card {
+        margin: 20px;
+        padding: 1.5rem;
+        max-width: calc(100% - 40px);
+    }
 
+    .login .formulario input {
+        width: 100%;
+    }
 
+    .login .brand {
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+    }
 
+    .login .brand h2 {
+        font-size: 18px;
+    }
+}
 
-
-
-
-
-
-
-
-
-
-/* Footer */
+/* ===========================================
+   FOOTER
+   =========================================== */
 footer {
     background: #1a1a1a;
     padding: 15px 0;
     font-size: 0.9rem;
     color: #aaa;
     box-shadow: inset 0 1px 0 #333;
+    margin-top: 40px;
 }
 
-/* Lightbox */
+/* ===========================================
+   LIGHTBOX
+   =========================================== */
 #lightbox {
     position: fixed;
-    display: none;
     top: 0;
     left: 0;
     width: 100vw;
@@ -181,8 +583,16 @@ footer {
     background: rgba(0, 0, 0, 0.85);
     justify-content: center;
     align-items: center;
-    z-index: 1055;
+    z-index: 1055; /* Acima de navbar, abaixo do modal de login */
     cursor: pointer;
+    display: none; /* Controlado por JS com d-none */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+#lightbox:not(.d-none) {
+    display: flex !important;
+    opacity: 1;
 }
 
 #lightbox img {
@@ -190,6 +600,11 @@ footer {
     max-height: 80%;
     border-radius: 10px;
     box-shadow: 0 0 30px rgba(255, 111, 97, 0.8);
+    transition: transform 0.3s ease;
+}
+
+#lightbox img:hover {
+    transform: scale(1.02);
 }
 
 #lightbox .fechar {
@@ -197,207 +612,194 @@ footer {
     top: 20px;
     right: 30px;
     font-size: 3rem;
-    color: #ff6f61;
+    color: var(--primary-color);
     cursor: pointer;
     user-select: none;
+    transition: color 0.3s ease, transform 0.2s ease;
+    z-index: 1056;
 }
 
+#lightbox .fechar:hover {
+    color: white;
+    transform: scale(1.1);
+}
 
-/* Responsive tweaks */
+/* Responsivo para lightbox */
 @media (max-width: 767.98px) {
-    header h1 {
+    #lightbox img {
+        max-width: 95%;
+        max-height: 70%;
+    }
+
+    #lightbox .fechar {
+        top: 10px;
+        right: 15px;
         font-size: 2rem;
     }
+}
 
-    .card-img-top {
-        height: 150px;
+/* ===========================================
+   TOAST (MENSAGENS DE SUCESSO/ERRO)
+   =========================================== */
+.toast {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #333;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    z-index: 10001; /* Acima de navbar e sidebar, abaixo do modal de login */
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    min-width: 250px;
+    font-size: 14px;
+    text-align: center;
+}
+
+.toast.show {
+    transform: translateX(0);
+}
+
+.toast.success { 
+    background: #28a745; 
+    border-left: 4px solid #20c997;
+}
+
+.toast.error { 
+    background: #dc3545; 
+    border-left: 4px solid #fd7e14;
+}
+
+/* Responsivo para toast */
+@media (max-width: 480px) {
+    .toast {
+        top: 10px;
+        right: 10px;
+        left: 10px;
+        min-width: auto;
+        transform: translateY(-100%);
+    }
+
+    .toast.show {
+        transform: translateY(0);
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* Estilização customizada */
-
-/* Botão voltar ao topo */
+/* ===========================================
+   BOTÃO VOLTAR AO TOPO
+   =========================================== */
 #amem {
     position: fixed;
     bottom: 30px;
     right: 30px;
-    background-color: #6a0dad;
+    background-color: var(--purple-dark);
     color: white;
     padding: 10px 15px;
     border-radius: 50px;
     font-weight: bold;
     text-decoration: none;
     box-shadow: 0 4px 8px rgba(106, 13, 173, 0.4);
-    transition: background-color 0.3s ease;
-    z-index: 1100;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    z-index: 1100; /* Acima de tudo, exceto modal de login */
+    display: none; /* Controlado por JS: aparece após scroll */
+    font-size: 14px;
 }
 
 #amem:hover {
     background-color: #4b068a;
     text-decoration: none;
     color: white;
+    transform: scale(1.05);
 }
 
-/* Navbar Brand with gradient */
-
-/* Carousel captions improvements */
-.carousel-caption {
-    backdrop-filter: blur(6px);
+#amem:active {
+    transform: scale(0.95);
 }
 
-.carousel-custom {
-    max-width: 1200px; /* Diminui a largura total do carousel */
-    margin: 0 auto;   /* Centraliza horizontalmente */
+/* Responsivo para botão topo */
+@media (max-width: 480px) {
+    #amem {
+        bottom: 20px;
+        right: 20px;
+        padding: 8px 12px;
+        font-size: 12px;
+    }
 }
 
-.carousel-custom .carousel-item img {
-    max-height: 700px; /* Limita a altura da imagem */
-    object-fit: cover; /* Corta a imagem se necessário mantendo proporção */
-    border-radius: 10px; /* Borda arredondada opcional */
-}
-
-
-
-
-/* Modal header btn-close white */
-.modal-header .btn-close {
-    filter: brightness(0) invert(1);
-}
-
-/* Custom button purple */
-.btn-purple {
-    background-color: #6a0dad;
-    border: none;
-    transition: background-color 0.3s ease;
-}
-
-.btn-purple:hover {
-    background-color: #4b068a;
-}
-
-
-
-/*------------------------------Menu amberueigoer e normal*/
-
-/* Menu principal */
-nav ul {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-}
-
-nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-weight: 500;
-}
-
-/* Botão hamburguer - escondido em telas grandes */
-.hamburger {
-    display: none;
-    flex-direction: column;
+/* ===========================================
+   MINIATURAS (IMAGENS CLICÁVEIS PARA LIGHTBOX)
+   =========================================== */
+.miniatura {
     cursor: pointer;
-    gap: 5px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.hamburger div {
-    width: 25px;
-    height: 3px;
-    background: white;
-    border-radius: 2px;
+.miniatura:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 12px rgba(255, 111, 97, 0.4);
 }
 
-/* Menu hamburguer oculto inicialmente */
-.mobile-menu {
-    display: none;
-    position: absolute;
-    top: 60px;
-    /* abaixo do header */
-    right: 20px;
-    background: #444;
-    border-radius: 5px;
-    overflow: hidden;
-}
-
-.mobile-menu ul {
-    flex-direction: column;
-    padding: 10px;
-}
-
-.mobile-menu ul li {
-    margin: 10px 0;
-}
-
-.mobile-menu ul li a {
-    color: white;
-    text-decoration: none;
-    font-weight: 500;
-    display: block;
-}
-
-/* Sidebar escondida inicialmente */
-.sidebar {
-    height: 100vh;
-    width: 250px;
-    background-color: #333;
-    color: white;
-    position: fixed;
-    top: 0;
-    left: -250px;
-    /* escondida fora da tela */
-    transition: left 0.3s ease;
-    padding-top: 60px;
-    z-index: 1000;
-}
-
-/* Quando sidebar estiver ativa, ela aparece */
-.sidebar.active {
-    left: 0;
-}
-
-/* Itens da sidebar */
-.sidebar a {
-    display: block;
-    padding: 15px 25px;
-    color: white;
-    text-decoration: none;
-}
-
-.sidebar a:hover {
-    background-color: #575757;
-}
-
-/* Responsividade */
-@media (max-width: 768px) {
-    nav ul {
-        display: none;
-        /* esconde menu grande */
+/* ===========================================
+   RESPONSIVIDADE GERAL E OVERRIDES BOOTSTRAP
+   =========================================== */
+/* Ajustes para container e margens em mobile */
+@media (max-width: 767.98px) {
+    .container {
+        padding-left: 15px;
+        padding-right: 15px;
     }
 
-    .hamburger {
-        display: flex;
-        /* mostra o botão hamburguer */
+    section h2 {
+        font-size: 1.8rem;
+    }
+
+    .btn-lg {
+        padding: 8px 20px;
+        font-size: 1rem;
     }
 }
 
-/* Quando o menu mobile estiver ativo */
-.mobile-menu.active {
-    display: block;
+/* Tablet */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    header h1 {
+        font-size: 2.5rem;
+    }
+
+    .carousel-custom .carousel-item img {
+        max-height: 500px;
+    }
 }
 
+/* Overrides para Bootstrap (sombras, bordas arredondadas) */
+.modal-content {
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.carousel-indicators button {
+    background-color: var(--primary-color);
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+}
+
+/* Evita scroll horizontal em mobile */
+@media (max-width: 480px) {
+    body {
+        padding-bottom: 20px; /* Espaço para botão topo se visível */
+    }
+
+    .login .card {
+        margin: 10px;
+        padding: 1rem;
+    }
+}
+
+/* ===========================================
+   FIM DO CSS
+   =========================================== */
