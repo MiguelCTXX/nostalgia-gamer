@@ -39,12 +39,14 @@ a.nav-link.active {
 /* ===========================================
    NAVBAR E SIDEBAR MOBILE
    =========================================== */
-   .navbar {
-    z-index: 1030; /* Padrão Bootstrap, abaixo do modal de login */
+.navbar {
+    z-index: 1030;
+    /* Padrão Bootstrap, abaixo do modal de login */
 }
 
 .navbar-brand img {
-    border-radius: 50%; /* Imagem do logo arredondada */
+    border-radius: 50%;
+    /* Imagem do logo arredondada */
 }
 
 /* Menu principal (desktop e mobile) */
@@ -53,8 +55,10 @@ a.nav-link.active {
     display: flex;
     gap: 20px;
     flex-direction: row;
-    justify-content: flex-start; /* Alinha os itens no começo */
-    width: auto; /* Ajuste o tamanho do container de navegação */
+    justify-content: flex-start;
+    /* Alinha os itens no começo */
+    width: auto;
+    /* Ajuste o tamanho do container de navegação */
     margin-bottom: 0;
 }
 
@@ -68,8 +72,10 @@ a.nav-link.active {
     color: white !important;
     text-decoration: none;
     font-weight: 500;
-    padding: 0.5rem 1rem; /* Adiciona espaçamento ao redor dos links */
-    border-radius: 5px; /* Bordas arredondadas para os links */
+    padding: 0.5rem 1rem;
+    /* Adiciona espaçamento ao redor dos links */
+    border-radius: 5px;
+    /* Bordas arredondadas para os links */
 }
 
 /* Botão Entrar (customizado) */
@@ -198,10 +204,8 @@ a.nav-link.active {
 header {
     background: linear-gradient(135deg, #0d37f1 0%, #ffd000 100%);
     box-shadow: 0 4px 10px rgba(106, 13, 173, 0.6);
-    margin-top: 76px;
-    /* Espaço para navbar fixa */
+    margin-bottom: 40px;
     padding: 150px 0 60px 0;
-    text-align: center;
 }
 
 header h1 {
@@ -216,6 +220,7 @@ header p.lead {
     font-weight: 500;
     text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
 }
+
 
 /* Responsivo para header */
 @media (max-width: 767.98px) {

@@ -35,7 +35,7 @@ async function cadastrar_usuario(event) {
         if (!requisicao.ok) throw new Error(resposta.mensagem || "Erro ao cadastrar usuário");
 
         showToast(resposta.mensagem || "Usuário cadastrado com sucesso!", "success");
-        
+
         // Limpa o form e volta para login
         event.target.reset();
         mostrarLogin(); // Ou fecharLogin() se quiser fechar completamente
@@ -81,7 +81,7 @@ async function logar_usuario(event) {
         }
 
         showToast("Login realizado com sucesso! Bem-vindo " + (resposta.usuario?.nome || ""), "success");
-        
+
         // Limpa o form e fecha modal
         event.target.reset();
         fecharLogin();
@@ -250,12 +250,12 @@ function togglePassword(id) {
 // ===========================================
 // LIGHTBOX
 // ===========================================
-function fecharLightbox() {
-    const lb = document.getElementById('lightbox');
-    const lbImg = document.getElementById('lightbox-img');
-    if (lb) lb.classList.add('d-none');
-    if (lbImg) lbImg.src = '';
-}
+// function fecharLightbox() {
+//     const lb = document.getElementById('lightbox');
+//     const lbImg = document.getElementById('lightbox-img');
+//     if (lb) lb.classList.add('d-none');
+//     if (lbImg) lbImg.src = '';
+// }
 
 // ===========================================
 // TOAST
@@ -321,25 +321,69 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // ---------------------- LIGHTBOX ----------------------
+    // document.querySelectorAll('.miniatura').forEach(img => {
+    //     img.style.cursor = 'pointer';
+    //     img.addEventListener('click', () => {
+    //         const srcGrande = img.getAttribute('data-grande') || img.src;
+    //         const lightbox = document.getElementById('lightbox');
+    //         const lightboxImg = document.getElementById('lightbox-img');
+    //         if (lightbox && lightboxImg) {
+    //             lightboxImg.src = srcGrande;
+    //             lightbox.classList.remove('d-none');
+    //         }
+    //     });
+    // });
+
+    // const lightbox = document.getElementById('lightbox');
+    // if (lightbox) {
+    //     lightbox.addEventListener('click', (e) => {
+    //         if (e.target.id === 'lightbox') fecharLightbox();
+    //     });
+    // }
+
+
+    // Abre a imagem ampliada ao clicar em miniaturas
     document.querySelectorAll('.miniatura').forEach(img => {
         img.style.cursor = 'pointer';
         img.addEventListener('click', () => {
             const srcGrande = img.getAttribute('data-grande') || img.src;
             const lightbox = document.getElementById('lightbox');
             const lightboxImg = document.getElementById('lightbox-img');
-            if (lightbox && lightboxImg) {
-                lightboxImg.src = srcGrande;
-                lightbox.classList.remove('d-none');
-            }
+            lightboxImg.src = srcGrande;
+            lightbox.classList.remove('d-none');
         });
     });
 
-    const lightbox = document.getElementById('lightbox');
-    if (lightbox) {
-        lightbox.addEventListener('click', (e) => {
-            if (e.target.id === 'lightbox') fecharLightbox();
-        });
+    // Fecha o lightbox
+    function fecharLightbox() {
+        document.getElementById('lightbox').classList.add('d-none');
+        document.getElementById('lightbox-img').src = '';
     }
+
+    // Fecha o lightbox ao clicar fora da imagem
+    document.getElementById('lightbox').addEventListener('click', (e) => {
+        if (e.target.id === 'lightbox') fecharLightbox();
+    });
+
+    // Para fechar offcanvas ao clicar em um link (melhora experiência em mobile)
+    document.querySelectorAll('.offcanvas .nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+            const offcanvasEl = document.querySelector('.offcanvas.show');
+            if (offcanvasEl) {
+                const offcanvas = bootstrap.Offcanvas.getInstance(offcanvasEl);
+                offcanvas.hide();
+            }
+        });
+    });
+    // Também fecha se clicar fora da imagem
+    document.getElementById('lightbox').addEventListener('click', function (e) {
+        if (e.target.id === 'lightbox' || e.target.classList.contains('fechar')) {
+            fecharLightbox();
+        }
+    });
+
+
+
 
     // ---------------------- HAMBURGER/SIDEBAR ----------------------
     const hamburger = document.querySelector('.hamburger');
