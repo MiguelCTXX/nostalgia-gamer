@@ -39,25 +39,37 @@ a.nav-link.active {
 /* ===========================================
    NAVBAR E SIDEBAR MOBILE
    =========================================== */
-.navbar {
+   .navbar {
     z-index: 1030; /* Padrão Bootstrap, abaixo do modal de login */
 }
 
 .navbar-brand img {
-    border-radius: 50%;
+    border-radius: 50%; /* Imagem do logo arredondada */
 }
 
-/* Menu principal desktop */
+/* Menu principal (desktop e mobile) */
 .navbar-nav {
     list-style: none;
     display: flex;
     gap: 20px;
+    flex-direction: row;
+    justify-content: flex-start; /* Alinha os itens no começo */
+    width: auto; /* Ajuste o tamanho do container de navegação */
+    margin-bottom: 0;
 }
 
+/* Força os itens a permanecerem visíveis na versão mobile */
+.navbar-collapse {
+    display: block !important;
+}
+
+/* Estiliza os links de navegação */
 .navbar-nav .nav-link {
     color: white !important;
     text-decoration: none;
     font-weight: 500;
+    padding: 0.5rem 1rem; /* Adiciona espaçamento ao redor dos links */
+    border-radius: 5px; /* Bordas arredondadas para os links */
 }
 
 /* Botão Entrar (customizado) */
@@ -133,9 +145,11 @@ a.nav-link.active {
     color: white;
     position: fixed;
     top: 0;
-    left: -250px; /* Escondida fora da tela */
+    left: -250px;
+    /* Escondida fora da tela */
     transition: left 0.3s ease;
-    padding-top: 60px; /* Espaço para navbar fixa */
+    padding-top: 60px;
+    /* Espaço para navbar fixa */
     z-index: 1000;
 }
 
@@ -163,11 +177,13 @@ a.nav-link.active {
 /* Responsividade para mobile */
 @media (max-width: 768px) {
     .navbar-nav.me-auto {
-        display: none; /* Esconde menu desktop */
+        display: none;
+        /* Esconde menu desktop */
     }
 
     .hamburger {
-        display: flex; /* Mostra hamburger */
+        display: flex;
+        /* Mostra hamburger */
     }
 
     .button {
@@ -182,7 +198,8 @@ a.nav-link.active {
 header {
     background: linear-gradient(135deg, #0d37f1 0%, #ffd000 100%);
     box-shadow: 0 4px 10px rgba(106, 13, 173, 0.6);
-    margin-top: 76px; /* Espaço para navbar fixa */
+    margin-top: 76px;
+    /* Espaço para navbar fixa */
     padding: 150px 0 60px 0;
     text-align: center;
 }
@@ -346,7 +363,8 @@ section h2 {
     left: 0;
     width: 100%;
     height: 100vh;
-    z-index: 9999; /* Acima de navbar (1030), lightbox (1055), sidebar (1000) */
+    z-index: 9999;
+    /* Acima de navbar (1030), lightbox (1055), sidebar (1000) */
     margin: 0;
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
@@ -358,7 +376,8 @@ section h2 {
     background-position: center;
     background-size: cover;
     opacity: 1;
-    transition: opacity 0.3s ease; /* Para fade-in/out */
+    transition: opacity 0.3s ease;
+    /* Para fade-in/out */
 }
 
 /* Card central */
@@ -373,7 +392,8 @@ section h2 {
     color: white;
     text-align: center;
     position: relative;
-    z-index: 10000; /* Acima do fundo */
+    z-index: 10000;
+    /* Acima do fundo */
     transform: scale(0.95);
     transition: transform 0.3s ease;
 }
@@ -506,7 +526,8 @@ section h2 {
 }
 
 .login .muda {
-    position: relative; /* Mudança: relative para centralizar no p */
+    position: relative;
+    /* Mudança: relative para centralizar no p */
     left: 0;
     transform: none;
     text-align: center;
@@ -583,9 +604,11 @@ footer {
     background: rgba(0, 0, 0, 0.85);
     justify-content: center;
     align-items: center;
-    z-index: 1055; /* Acima de navbar, abaixo do modal de login */
+    z-index: 1055;
+    /* Acima de navbar, abaixo do modal de login */
     cursor: pointer;
-    display: none; /* Controlado por JS com d-none */
+    display: none;
+    /* Controlado por JS com d-none */
     opacity: 0;
     transition: opacity 0.3s ease;
 }
@@ -649,7 +672,8 @@ footer {
     color: white;
     padding: 12px 20px;
     border-radius: 8px;
-    z-index: 10001; /* Acima de navbar e sidebar, abaixo do modal de login */
+    z-index: 10001;
+    /* Acima de navbar e sidebar, abaixo do modal de login */
     transform: translateX(100%);
     transition: transform 0.3s ease;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
@@ -662,13 +686,13 @@ footer {
     transform: translateX(0);
 }
 
-.toast.success { 
-    background: #28a745; 
+.toast.success {
+    background: #28a745;
     border-left: 4px solid #20c997;
 }
 
-.toast.error { 
-    background: #dc3545; 
+.toast.error {
+    background: #dc3545;
     border-left: 4px solid #fd7e14;
 }
 
@@ -702,8 +726,10 @@ footer {
     text-decoration: none;
     box-shadow: 0 4px 8px rgba(106, 13, 173, 0.4);
     transition: background-color 0.3s ease, transform 0.2s ease;
-    z-index: 1100; /* Acima de tudo, exceto modal de login */
-    display: none; /* Controlado por JS: aparece após scroll */
+    z-index: 1100;
+    /* Acima de tudo, exceto modal de login */
+    display: none;
+    /* Controlado por JS: aparece após scroll */
     font-size: 14px;
 }
 
@@ -791,7 +817,8 @@ footer {
 /* Evita scroll horizontal em mobile */
 @media (max-width: 480px) {
     body {
-        padding-bottom: 20px; /* Espaço para botão topo se visível */
+        padding-bottom: 20px;
+        /* Espaço para botão topo se visível */
     }
 
     .login .card {
