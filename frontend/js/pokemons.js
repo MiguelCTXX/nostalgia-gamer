@@ -68,7 +68,7 @@ async function cadastrar_usuario(event) {
             senha: document.getElementById("password-cadastro").value
         };
 
-        const requisicao = await fetch("http://localhost:5000/register", {
+        const requisicao = await fetch("https://nostalgia-gamer-production.up.railway.app/register", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(usuario)
@@ -93,7 +93,7 @@ async function logar_usuario(event) {
             senha: document.getElementById("password-login").value
         };
 
-        const requisicao = await fetch("http://localhost:5000/login", {
+        const requisicao = await fetch("https://nostalgia-gamer-production.up.railway.app/login", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(usuario),
@@ -120,7 +120,7 @@ async function logar_usuario(event) {
 // ---------------------- VERIFICAR SESSÃO ----------------------
 // async function verificarSessao() {
 //     try {
-//         const resp = await fetch("http://localhost:5000/verificarSessao", {
+//         const resp = await fetch("https://nostalgia-gamer-production.up.railway.app/verificarSessao", {
 //             method: "GET",
 //             credentials: "include"
 //         });
@@ -167,7 +167,7 @@ async function logar_usuario(event) {
 
 async function verificarSessao() {
     try {
-        const resp = await fetch("http://localhost:5000/verificarSessao", {
+        const resp = await fetch("https://nostalgia-gamer-production.up.railway.app/verificarSessao", {
             method: "GET",
             credentials: "include"
         });
@@ -217,7 +217,7 @@ async function verificarSessao() {
 // ---------------------- LOGOUT ----------------------
 async function logout_usuario() {
     try {
-        const resp = await fetch("http://localhost:5000/logout", {
+        const resp = await fetch("https://nostalgia-gamer-production.up.railway.app/logout", {
             method: "POST",
             credentials: "include"
         });
