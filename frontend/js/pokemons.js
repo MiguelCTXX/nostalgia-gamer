@@ -25,7 +25,7 @@ async function cadastrar_usuario(event) {
             throw new Error("Preencha todos os campos obrigatórios.");
         }
 
-        const requisicao = await fetch("http://nostalgia-gamer-production.up.railway.app/login/register", {
+        const requisicao = await fetch("https://nostalgia-gamer-production.up.railway.app/register", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(usuario)
@@ -68,7 +68,7 @@ async function logar_usuario(event) {
             throw new Error("Preencha e-mail e senha.");
         }
 
-        const requisicao = await fetch("http://nostalgia-gamer-production.up.railway.app/login/login", {
+        const requisicao = await fetch("https://nostalgia-gamer-production.up.railway.app/login", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(usuario),
@@ -99,7 +99,7 @@ async function logar_usuario(event) {
 // ---------------------- VERIFICAR SESSÃO ----------------------
 async function verificarSessao() {
     try {
-        const resp = await fetch("http://nostalgia-gamer-production.up.railway.app/login/verificarSessao", {
+        const resp = await fetch("https://nostalgia-gamer-production.up.railway.app/verificarSessao", {
             method: "GET",
             credentials: "include"
         });
@@ -169,7 +169,7 @@ async function verificarSessao() {
 // ---------------------- LOGOUT ----------------------
 async function logout_usuario() {
     try {
-        const resp = await fetch("http://nostalgia-gamer-production.up.railway.app/login/logout", {
+        const resp = await fetch("https://nostalgia-gamer-production.up.railway.app/logout", {
             method: "POST",
             credentials: "include"
         });
